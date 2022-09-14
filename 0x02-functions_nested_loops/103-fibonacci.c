@@ -22,5 +22,5 @@ b = c;
 c = a + b;
 }
 printf("%d\n", counter);
-return (0)
+ return (0);
 }
