@@ -27,7 +27,6 @@ n++;
 }
 abs = n;
 abSCount = n;
-
 while (abSCount > 0)
 {
 abSCount /= 10;
@@ -35,7 +34,6 @@ c++;
 }
 for (i = 0; i < c - 1; i++)
 mult *= 10;
-
 for (i = 0; i < c; i++)
 {
 _putchar((abs / mult) + '0');
