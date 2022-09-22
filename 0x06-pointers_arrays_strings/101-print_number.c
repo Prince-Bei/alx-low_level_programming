@@ -1,45 +1,24 @@
 #include "main.h"
 
 /**
- * print_number - prints numbe
- * @n:integer to convert to character
- *
+ * print_number - Print the given int one digit at a time
+ * @n: The integer to print
  */
 
 void print_number(int n)
 {
-unsigned int abs;
-int mult = 1;
-unsigned int abSCount;
-int i;
-int c = 0;
-
 if (n == 0)
 {
 _putchar('0');
+return;
 }
-if (n < 0)
-{
-_putchar('-');
-n += 1;
+else if (n > 0)
 n *= -1;
-n++;
-}
-abs = n;
-abSCount = n;
-
-while (abSCount > 0)
+else
+_putchar('-');
+if ((n / 10) != 0)
 {
-abSCount /= 10;
-c++;
+print_number((n / 10) * -1);
 }
-for (i = 0; i < c - 1; i++)
-mult *= 10;
-
-for (i = 0; i < c; i++)
-{
-_putchar((abs / mult) + '0');
-abs = abs % mult;
-mult /= 10;
-}
+_putchar((n % 10) * -1 + '0');
 }
