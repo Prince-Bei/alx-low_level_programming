@@ -1,33 +1,52 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * argstostr- concatnate command line arguments
- * @ac: argument count
- * @av: argument vector
+ * argstostr - concatenates all the arguments of a program.
+ * @ac: argument count.
+ * @av: argument vector.
  *
- * Return: pointer to new string
+ * Return: pointer of an array of char
  */
-
 char *argstostr(int ac, char **av)
 {
-int i;
-char *p;
-int j = 0;
+char *aout;
+int c, i, j, ia;
 
-if (ac == 0 || av == NULL)
+if (ac == 0)
 return (NULL);
-p = malloc(sizeof(char *) * ac);
-if (p == NULL)
-return (NULL);
-for (i = 0; i < ac; i++)
+
+for (c = i = 0; i < ac; i++)
 {
-for (j = 0; *av[j]; j++)
-p[i] = *av[j];
-_putchar('\n');
+if (av[i] == NULL)
+return (NULL);
+
+for (j = 0; av[i][j] != '\0'; j++)
+c++;
+c++;
 }
 
-_putchar('\n');
-return (p);
+aout = malloc((c + 1) * sizeof(char));
+
+if (aout == NULL)
+{
+free(aout);
+return (NULL);
+}
+
+for (i = j = ia = 0; ia < c; j++, ia++)
+{
+if (av[i][j] == '\0')
+{
+aout[ia] = '\n';
+i++;
+ia++;
+j = 0;
+}
+if (ia < c - 1)
+aout[ia] = av[i][j];
+}
+aout[ia] = '\0';
+
+return (aout);
 }
