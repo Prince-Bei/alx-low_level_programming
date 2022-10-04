@@ -1,48 +1,33 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * argstostr - gives array of args
+ * argstostr- concatnate command line arguments
  * @ac: argument count
- * @av: array of arguments
- * Return: char value
+ * @av: argument vector
+ *
+ * Return: pointer to new string
  */
 
 char *argstostr(int ac, char **av)
 {
-int size;
-char *s;
 int i;
-int j;
-int k;
+char *p;
+int j = 0;
 
 if (ac == 0 || av == NULL)
 return (NULL);
-
-for (i = 0; i < ac; i++)
-{
-for (j = 0; av[i][j] != '\0'; j++)
-size++;
-}
-
-size += (ac + 1);
-s = malloc(sizeof(char) * size);
-if (s == NULL)
+p = malloc(sizeof(char *) * ac);
+if (p == NULL)
 return (NULL);
-k = 0;
 for (i = 0; i < ac; i++)
 {
-for (j = 0; av[i][j] != '\0'; j++)
-{
-s[k] = av[i][j];
-k++;
-}
-s[k] = '\n';
-k++;
+for (j = 0; *av[j]; j++)
+p[i] = *av[j];
+_putchar('\n');
 }
 
-s[k] = '\0';
-
-return (s);
+_putchar('\n');
+return (p);
 }
