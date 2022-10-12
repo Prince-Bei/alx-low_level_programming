@@ -17,7 +17,7 @@ for (i = 0; i < n; i++)
 printf("%.2hhx", a[i]);
 if (i < n - 1)
 printf(" ");
-    }
+}
 printf("\n");
 
 }
